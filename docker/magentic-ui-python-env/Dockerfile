@@ -47,6 +47,11 @@ LABEL org.opencontainers.image.source=https://github.com/microsoft/magentic-ui
 LABEL org.opencontainers.image.description="Magentic UI Python Environment container for executing code and commands safely"
 LABEL org.opencontainers.image.licenses=MIT
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-CMD ["bash"]
+
+# --- Auto-Generated Entrypoint Configuration ---
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+RUN mkdir -p /var/log && touch /var/log/app.log
+EXPOSE 8081
+ENTRYPOINT ["/entrypoint.sh"]
